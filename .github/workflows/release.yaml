@@ -19,17 +19,12 @@ jobs:
     - name: Checkout repo
       uses: actions/checkout@v2
 
-    - name: Cache maven deps
-      uses: actions/cache@v2
-      with:
-        path: ~/.m2/repository
-        key: maven-1.8-${{ hashFiles('**/pom.xml') }}
-
     - name: Select JDK
       uses: actions/setup-java@v2
       with:
-        java-version: 8
-        distribution: adopt
+        java-version: 11
+        distribution: temurin
+        cache: maven
         server-id: ossrh
         server-username: OSSRH_USERNAME
         server-password: OSSRH_PASSWORD
