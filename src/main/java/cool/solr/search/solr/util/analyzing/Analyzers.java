@@ -1,17 +1,22 @@
 package cool.solr.search.solr.util.analyzing;
 
-import com.google.common.base.Joiner;
-import com.google.common.collect.Lists;
-import org.apache.commons.lang.StringUtils;
-import org.apache.lucene.analysis.Analyzer;
-import org.apache.lucene.analysis.TokenStream;
-import org.apache.lucene.analysis.tokenattributes.*;
+import static com.google.common.base.Preconditions.checkNotNull;
 
 import java.io.IOException;
 import java.io.StringReader;
 import java.util.List;
 
-import static com.google.common.base.Preconditions.checkNotNull;
+import org.apache.logging.log4j.util.Strings;
+import org.apache.lucene.analysis.Analyzer;
+import org.apache.lucene.analysis.TokenStream;
+import org.apache.lucene.analysis.tokenattributes.CharTermAttribute;
+import org.apache.lucene.analysis.tokenattributes.OffsetAttribute;
+import org.apache.lucene.analysis.tokenattributes.PositionIncrementAttribute;
+import org.apache.lucene.analysis.tokenattributes.PositionLengthAttribute;
+import org.apache.lucene.analysis.tokenattributes.TypeAttribute;
+
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 
 /**
  * Analyzer utilities. This class is superseeded by the open source version in solr-analyzers.
@@ -61,7 +66,7 @@ public class Analyzers {
 
             // read into candidate map
             while (tokenStream.incrementToken()) {
-                String value = StringUtils.trimToNull(charAttr.toString());
+                String value = Strings.trimToNull(charAttr.toString());
 
                 if (value != null) {
                     result.add(value);
