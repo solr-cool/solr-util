@@ -68,7 +68,7 @@ public final class NamedLists {
     * Gets the nested {@code NamedList} stored at the given index. Note that unlike {@link NamedList#getVal(int)}, this
     * method will return {@code null} if the given index is invalid instead of throwing an
     * {@code IndexOutOfBoundsException}.
-    * 
+    *
     * @param namedList
     *           the list.
     * @param index
@@ -86,7 +86,7 @@ public final class NamedLists {
 
    /**
     * Returns the set of keys in the given named list.
-    * 
+    *
     * @param namedList
     *           the list.
     *
@@ -108,7 +108,7 @@ public final class NamedLists {
 
    /**
     * Gets the {@code Set} of the specified name from the given list.
-    * 
+    *
     * @param namedList
     *           the list.
     * @param name
@@ -127,7 +127,7 @@ public final class NamedLists {
    /**
     * Gets a set from the given list. See the class documentation for notes on convenience methods that take a path as
     * their argument.
-    * 
+    *
     * @see #getSet(NamedList, String)
     */
    public static <T> Set<T> getSet(NamedList<?> namedList, String... names) {
@@ -155,7 +155,7 @@ public final class NamedLists {
    /**
     * Gets a list from the given list. See the class documentation for notes on convenience methods that take a path as
     * their argument.
-    * 
+    *
     * @see #getList(NamedList, String)
     */
    public static <T> List<T> getList(NamedList<?> namedList, String... names) {
@@ -215,8 +215,44 @@ public final class NamedLists {
    }
 
    /**
+    * Gets a integer value from the given list.
+    *
+    * @see #getString(NamedList, String)
+    */
+   public static Integer getInteger(NamedList<?> namedList, String... names) {
+      return get(namedList, Integer.class, names);
+   }
+
+   /**
+    * Gets a long value from the given list.
+    *
+    * @see #getString(NamedList, String)
+    */
+   public static Long getLong(NamedList<?> namedList, String... names) {
+      return get(namedList, Long.class, names);
+   }
+
+   /**
+    * Gets a float value from the given list.
+    *
+    * @see #getString(NamedList, String)
+    */
+   public static Float getFloat(NamedList<?> namedList, String... names) {
+      return get(namedList, Float.class, names);
+   }
+
+   /**
+    * Gets a Double value from the given list.
+    *
+    * @see #getString(NamedList, String)
+    */
+   public static Double getDouble(NamedList<?> namedList, String... names) {
+      return get(namedList, Double.class, names);
+   }
+
+   /**
     * Gets the element of the specified name from the given list.
-    * 
+    *
     * @param namedList
     *           the list.
     * @param elementClass
@@ -254,7 +290,7 @@ public final class NamedLists {
 
    /**
     * Gets the element at the specified index from the given list.
-    * 
+    *
     * @param namedList
     *           the list.
     * @param elementClass
